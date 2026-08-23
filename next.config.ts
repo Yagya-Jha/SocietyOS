@@ -9,7 +9,10 @@ const withPWA = withPWAInit({
 
 const nextConfig: NextConfig = {
   /* config options here */
-  serverExternalPackages: ['@xenova/transformers'],
+  serverExternalPackages: ['@xenova/transformers', 'onnxruntime-node'],
+  outputFileTracingIncludes: {
+    '/api/incidents': ['./node_modules/**/*.wasm', './node_modules/**/*.so'],
+  },
   turbopack: {},
   allowedDevOrigins: ['192.168.29.123'],
 };
