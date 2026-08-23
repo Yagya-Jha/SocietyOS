@@ -61,10 +61,10 @@ export async function GET(req: Request) {
       },
     });
 
-    const categories = categoryGroup.map(g => ({
+    const categories = categoryGroup.map((g: any) => ({
       name: g.category,
       count: g._count.category,
-    })).sort((a, b) => b.count - a.count);
+    })).sort((a: any, b: any) => b.count - a.count);
 
     return NextResponse.json({ 
       totalIncidents, 

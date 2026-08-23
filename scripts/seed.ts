@@ -72,13 +72,13 @@ async function main() {
       where: {
         society_id_category: {
           society_id: society.id,
-          category: r.category,
+          category: r.category as any,
         },
       },
       update: { team_name: r.team_name },
       create: {
         society_id: society.id,
-        category: r.category,
+        category: r.category as any,
         team_name: r.team_name,
       },
     });
@@ -133,7 +133,7 @@ async function main() {
     const createdInc = await prisma.incident.create({
       data: {
         society_id: society.id,
-        ...inc,
+        ...(inc as any),
         events: {
           create: [
             {

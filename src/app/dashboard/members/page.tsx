@@ -46,7 +46,7 @@ export default async function MembersPage() {
 
         <div className="mt-8 border-t border-gray-200">
           <ul className="divide-y divide-gray-100">
-            {members.map((member) => (
+            {members.map((member: any) => (
               <li key={member.id} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-0 hover:bg-gray-50 transition-colors">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 rounded-full bg-indigo-100 flex-shrink-0 flex items-center justify-center text-indigo-700 font-bold text-lg">

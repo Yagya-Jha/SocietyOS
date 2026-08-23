@@ -207,7 +207,7 @@ export default async function DashboardPage({
             </div>
           ) : (
             <ul className="divide-y divide-gray-100">
-              {incidents.map((incident) => (
+              {incidents.map((incident: any) => (
                 <li key={incident.id}>
                   <Link 
                     href={`/complaints/${incident.id}`}

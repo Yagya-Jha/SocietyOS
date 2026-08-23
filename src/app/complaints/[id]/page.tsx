@@ -174,7 +174,7 @@ export default async function ComplaintDetailPage({
             {incident.events.length > 0 ? (
               <div className="flow-root">
                 <ul role="list" className="-mb-8">
-                  {incident.events.map((event, eventIdx) => (
+                  {incident.events.map((event: any, eventIdx: any) => (
                     <li key={event.id}>
                       <div className="relative pb-8">
                         {eventIdx !== incident.events.length - 1 ? (

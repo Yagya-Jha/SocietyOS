@@ -42,7 +42,7 @@ export async function POST(req: Request) {
     const hashedPassword = await bcrypt.hash(admin_password, 10);
 
     // Create society and admin in a transaction
-    const result = await prisma.$transaction(async (tx) => {
+    const result = await prisma.$transaction(async (tx: any) => {
       const society = await tx.society.create({
         data: {
           name: society_name,
