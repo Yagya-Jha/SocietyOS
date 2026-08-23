@@ -1,6 +1,6 @@
 # SocietyOS
-
-**Intelligent Residential Maintenance Platform**
+<img src="https://raw.githubusercontent.com/Yagya-Jha/SocietyOS/refs/heads/main/public/logo.png">
+<b>Intelligent Residential Maintenance Platform</b>
 
 SocietyOS is a modern, AI-powered platform designed to streamline residential society management, maintenance requests, and incident tracking. It replaces traditional WhatsApp groups and paper registers with an automated system that intelligently triages complaints, assigns them to the right teams, and tracks service-level agreements (SLAs).
 
@@ -13,7 +13,6 @@ SocietyOS is a modern, AI-powered platform designed to streamline residential so
     *   **Residents:** Can easily log new complaints, track their status in real-time, and communicate via timeline comments.
 *   **Live Analytics Dashboard:** Track open vs. resolved incidents, monitor SLA breaches, and view category breakdowns.
 *   **Progressive Web App (PWA):** Installable on mobile devices for a native app-like experience without needing an app store download.
-*   **Clean, Flat UI:** A modern, distraction-free interface prioritizing whitespace and typography (Geist font family).
 
 ## 🛠 Tech Stack
 
@@ -52,31 +51,3 @@ To test the onboarding flow for a brand new resident joining an existing society
 3. When prompted for the **Society Join Code**, use: `SLHLKG` (This links the new user to the test Gokuldham Society).
 
 ---
-
-## 💻 Local Development Setup
-
-If you wish to run this project locally:
-
-1. **Clone the repository**
-2. **Install dependencies:**
-   ```bash
-   npm install
-   ```
-3. **Environment Variables:**
-   Create a `.env.local` file in the root directory and add:
-   ```env
-   DATABASE_URL="your_neon_postgres_connection_string"
-   OPENROUTER_API_KEY="your_openrouter_api_key"
-   NEXTAUTH_SECRET="your_generated_secret_key"
-   ```
-4. **Database Setup:**
-   Generate the Prisma client and push the schema to your database:
-   ```bash
-   npx prisma generate
-   npx prisma db push
-   ```
-5. **Run the development server:**
-   ```bash
-   npm run dev
-   ```
-   Open [http://localhost:3000](http://localhost:3000) in your browser.
