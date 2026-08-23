@@ -5,6 +5,8 @@ import { generateText } from "ai";
 import { extractionModel } from "@/lib/ai";
 import { generateEmbedding } from "@/lib/embeddings";
 
+export const maxDuration = 60;
+
 export async function POST(req: Request) {
   try {
     const session = await auth();
