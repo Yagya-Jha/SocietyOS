@@ -3,6 +3,10 @@ import { pipeline, env } from '@xenova/transformers';
 // Skip local model check since we are downloading from HuggingFace
 env.allowLocalModels = false;
 env.cacheDir = '/tmp';
+env.backends.onnx.wasm.numThreads = 1;
+(env.backends.onnx as any).wasm.simd = false;
+// Try to force it to not use the missing native binaries
+(env.backends.onnx as any).node = false;
 
 // We use a singleton pattern for the pipeline to ensure it's only loaded once.
 class PipelineSingleton {
