@@ -1,0 +1,23 @@
+PrismaClientKnownRequestError: 
+Invalid `rules.map((r)=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].categoryRoutingRule.upsert()` invocation in
+C:\Users\Suraj\Desktop\PiXeLaTED\Yagya Study\SocietyOS\.next\dev\server\chunks\[root-of-the-server]__0ypiu3s._.js:141:189
+
+  138     });
+  139 }
+  140 // Process all rules in a transaction to safely upsert
+→ 141 const upserts = rules.map((r)=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].categoryRoutingRule.upsert(
+Transaction API error: Unable to start a transaction in the given time.
+
+PrismaClientKnownRequestError: 
+Invalid `rules.map((r)=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].categoryRoutingRule.upsert()` invocation in
+C:\Users\Suraj\Desktop\PiXeLaTED\Yagya Study\SocietyOS\.next\dev\server\chunks\[root-of-the-server]__0ypiu3s._.js:141:189
+
+  138     });
+  139 }
+  140 // Process all rules in a transaction to safely upsert
+→ 141 const upserts = rules.map((r)=>__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$lib$2f$prisma$2e$ts__$5b$app$2d$route$5d$__$28$ecmascript$29$__["prisma"].categoryRoutingRule.upsert(
+Transaction API error: Unable to start a transaction in the given time.
+    at Jr.handleRequestError (C:\Users\Suraj\Desktop\PiXeLaTED\Yagya Study\SocietyOS\node_modules\@prisma\client\runtime\client.js:65:8286)
+    at Jr.handleAndLogRequestError (C:\Users\Suraj\Desktop\PiXeLaTED\Yagya Study\SocietyOS\node_modules\@prisma\client\runtime\client.js:65:7581)
+    at Jr.request (C:\Users\Suraj\Desktop\PiXeLaTED\Yagya Study\SocietyOS\node_modules\@prisma\client\runtime\client.js:65:7288)
+    at async a (C:\Users\Suraj\Desktop\PiXeLaTED\Yagya Study\SocietyOS\node_modules\@prisma\client\runtime\client.js:99:6862)

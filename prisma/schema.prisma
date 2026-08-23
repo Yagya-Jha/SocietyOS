@@ -1,0 +1,124 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["postgresqlExtensions"]
+}
+
+datasource db {
+  provider   = "postgresql"
+  extensions = [vector]
+}
+
+enum Role {
+  resident
+  admin
+}
+
+enum IncidentCategory {
+  plumbing
+  electrical
+  civil_structural
+  elevator
+  security
+  housekeeping
+  parking
+  other
+}
+
+enum Priority {
+  low
+  medium
+  high
+  critical
+}
+
+enum IncidentStatus {
+  open
+  acknowledged
+  assigned
+  in_progress
+  resolved
+  closed
+  reopened
+}
+
+model Society {
+  id          String     @id @default(uuid())
+  name        String
+  address     String?
+  invite_code String     @unique
+  created_at  DateTime   @default(now())
+  users         User[]
+  incidents     Incident[]
+  routing_rules CategoryRoutingRule[]
+}
+
+model User {
+  id            String     @id @default(uuid())
+  society_id    String
+  society       Society    @relation(fields: [society_id], references: [id])
+  name          String?
+  email         String     @unique
+  password_hash String
+  role          Role       @default(resident)
+  flat_number   String?
+  phone         String?
+  created_at    DateTime   @default(now())
+  incidents     Incident[]
+  events        IncidentEvent[]
+}
+
+model Incident {
+  id                 String           @id @default(uuid())
+  society_id         String
+  society            Society          @relation(fields: [society_id], references: [id])
+  resident_id        String
+  resident           User             @relation(fields: [resident_id], references: [id])
+  raw_complaint_text String
+  category           IncidentCategory @default(other)
+  extracted_details  Json?
+  priority           Priority?
+  priority_score     Float?
+  status             IncidentStatus   @default(open)
+  assigned_to        String?
+  embedding          Unsupported("vector(384)")?
+  is_duplicate_of    String?
+  sla_due_at         DateTime?
+  created_at         DateTime         @default(now())
+  updated_at         DateTime         @updatedAt
+  resolved_at        DateTime?
+  events             IncidentEvent[]
+}
+
+enum EventType {
+  status_change
+  assignment
+  comment
+  system_note
+}
+
+model IncidentEvent {
+  id          String    @id @default(uuid())
+  incident_id String
+  incident    Incident  @relation(fields: [incident_id], references: [id])
+  actor_id    String?   // Nullable for system events
+  actor       User?     @relation(fields: [actor_id], references: [id])
+  type        EventType
+  content     String
+  created_at  DateTime  @default(now())
+}
+
+model CategoryRoutingRule {
+  id         String           @id @default(uuid())
+  society_id String
+  society    Society          @relation(fields: [society_id], references: [id])
+  category   IncidentCategory
+  team_name  String
+  created_at DateTime         @default(now())
+
+  @@unique([society_id, category])
+}
