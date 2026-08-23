@@ -62,7 +62,7 @@ export async function POST(req: Request) {
       }
 
       if (finalCategory === "other" && object.category) {
-        finalCategory = object.category;
+        finalCategory = object.category.toLowerCase().replace(" ", "_");
       }
       
       if (object.location) {
@@ -70,7 +70,10 @@ export async function POST(req: Request) {
       }
       
       if (object.priority) {
-        finalPriority = object.priority;
+        finalPriority = object.priority.toLowerCase();
+        if (!["low", "medium", "high", "critical"].includes(finalPriority)) {
+           finalPriority = "low";
+        }
       }
     } catch (aiError) {
       console.error("AI extraction failed, proceeding with fallback values:", aiError);

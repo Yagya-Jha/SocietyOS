@@ -2,6 +2,7 @@ import { pipeline, env } from '@xenova/transformers';
 
 // Skip local model check since we are downloading from HuggingFace
 env.allowLocalModels = false;
+env.cacheDir = '/tmp';
 
 // We use a singleton pattern for the pipeline to ensure it's only loaded once.
 class PipelineSingleton {
